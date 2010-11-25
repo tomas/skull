@@ -51,7 +51,7 @@ How to use
 
 Get a tarball or clone the repo:
 
-    $ git clone https://github.com/tomas/skull.git .
+    $ git clone https://github.com/tomas/skull.git
 
 If you want to use Skull in a script, just source the init script.
 
