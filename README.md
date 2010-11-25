@@ -31,12 +31,11 @@ Skull allows you to do pretty much the same, only without Ruby. Just plain ol' B
     $ a.push 'foo'
     $ a.count # => 1
 
-
 You can also just call methods "publicly", passing the element as an argument:
 
     $ String.downcase "THIS ROCKS" # => "this rocks"
-    $ a.push 'foo'
-    $ a.count # => 1
+    $ Process.kill 22674
+    $ File.size '/path/to/file.txt'
 
 Yes, this *is* Bash. Trust me.
 
