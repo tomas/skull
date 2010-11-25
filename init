@@ -35,12 +35,13 @@ Env.set
 
 load "${skull_path}/lib/*.sh"
 load "${skull_path}/util/*.sh"
+load "${skull_path}/plugins/*.sh"
 
 ####################################################################
 # initialization
 ####################################################################
 
 # init_classes Array Dir File Hash Numeric Process String XmlNode
-init_classes Array Hash File Numeric String XmlNode
+init_classes Array Hash File Numeric String
 
 debug "Skull framework ready!"

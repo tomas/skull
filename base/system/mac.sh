@@ -5,25 +5,30 @@
 # License: GPLv3
 ####################################################################
 
-System.logged_user.name(){ who | cut -d' ' -f1 | sort -u | tail -1; }
+####################################################################
+# arch
+####################################################################
 
-alias System.logged_user="System.logged_user.name"
+System.arch(){
+	[ `uname -m` == 'x86_64' ] && echo 'x64' || echo 'x86'
+}
 
-# this gives us the pts/tty the user's on
-System.logged_user.id(){ Process.id "loginwindow.app" }
+####################################################################
+# os version
+####################################################################
 
-System.os_version(){
+System.os.version(){
 	[ -z "$System__OS_VERSION" ] && System__OS_VERSION=`sw_vers -productVersion | cut -c1-4`
 	echo $System__OS_VERSION
 }
 
-System.os_version_name(){
+System.os.version.name(){
 	if [ -z "$System__OS_VERSION_NAME" ]; then
-		if [ `Number.greater_or_equal_than \`System.os_version\` 10.6` ]; then
+		if [ `Number.greater_or_equal_than \`System.os.version\` 10.6` ]; then
 			System__OS_VERSION_NAME="Snow Leopard"
-		elif [ `Number.greater_or_equal_than \`System.os_version\` 10.5` ]; then
+		elif [ `Number.greater_or_equal_than \`System.os.version\` 10.5` ]; then
 			System__OS_VERSION_NAME="Leopard"
-		elif [ `Number.greater_or_equal_than \`System.os_version\` 10.4` ]; then
+		elif [ `Number.greater_or_equal_than \`System.os.version\` 10.4` ]; then
 			System__OS_VERSION_NAME="Tiger"
 		else
 			System__OS_VERSION_NAME="Unknown"
@@ -32,14 +37,30 @@ System.os_version_name(){
 	echo $System__OS_VERSION_NAME
 }
 
-System.root_path(){ echo "/"; }
+####################################################################
+# session
+####################################################################
 
-System.temp_path(){ echo '/tmp'; }
+System.logged_user.name(){
+	who | cut -d' ' -f1 | sort -u | tail -1
+}
 
-System.system_path(){ echo "/etc"; }
+System.logged_user.id(){
+	Process.id "loginwindow.app"
+}
 
-System.users_path(){ echo "/home"; }
+####################################################################
+# paths
+####################################################################
 
-System.programs_path(){ echo '/usr'; }
+System.paths.root(){ echo "/"; }
 
-System.home_path(){ eval echo ~; }
+System.paths.temp(){ echo '/tmp'; }
+
+System.paths.system(){ echo "/Library"; }
+
+System.paths.users(){ echo "/Users"; }
+
+System.paths.programs(){ echo "/Applications"; }
+
+System.paths.home(){ eval echo ~; }

@@ -14,9 +14,10 @@ Env.set(){
 		then os=mac
 	fi
 
-	readonly os
+	# readonly os
 
 	. "${skull_path}/base/system/${os}.sh"
+	. "${skull_path}/base/system/base.sh"
 
 	# os speficic stuff
 	# readonly os_version=`System.os_version` # '10.10', '6.0' or '10.5'
@@ -34,6 +35,5 @@ Env.set(){
 }
 
 Env.unset(){
-	unset os os_version os_version_name root_path temp_path home_path logged_user logged_user_pid
 	unset os # os_version os_version_name root_path temp_path home_path logged_user logged_user_pid
 }

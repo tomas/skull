@@ -18,7 +18,7 @@ String__METHODS=(capitalize contains downcase decrypt encrypt length lowercase \
 # echoes 1 if needle is found in haystack, expects haystack as $1, needle as $2
 # usage find_in 'foobar' 'foo' -> echoes 1
 String.contains(){
-	requires "$2" || echo "${1}" | grep "${2}" 1> /dev/null && echo 1
+	required "$1" "$2" && echo "${1}" | grep "${2}" 1> /dev/null && echo 1
 }
 
 String.capitalize(){
@@ -64,11 +64,11 @@ String.md5sum(){
 }
 
 String.replace_once(){
-	requires "$2" "$3" || echo "$1" | sed "s/$2/$3/"
+	required "$2" "$3" && echo "$1" | sed "s/$2/$3/"
 }
 
 String.replace_all(){
-	requires "$2" "$3" || (echo "$1" | sed "s/$2/$3/g")
+	required "$2" "$3" && (echo "$1" | sed "s/$2/$3/g")
 }
 
 alias String.replace="String.replace_all"

@@ -14,6 +14,7 @@ base_path=`dirname $0`
 
 current_path=`dirname "$0"`
 . "${current_path}/../init"
+. "${current_path}/functions.sh"
 
 #########################
 # classes & instances

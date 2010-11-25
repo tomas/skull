@@ -29,38 +29,40 @@ Array.send(){
 }
 
 Array.all(){
-	requires "$1" || eval echo \${$1[@]}
+	required "$1" && eval echo \${$1[@]}
 }
 
 # returns array index
 Array.index(){
-	requires "$1" || eval echo \${!${1}[@]}
+	required "$1" && eval echo \${!${1}[@]}
 }
 
 # returns array size
 Array.count(){
-	requires "$1" || eval echo \${#${1}[@]}
+	required "$1" && eval echo \${#${1}[@]}
 }
 
 alias Array.size='Array.count'
 
-#  find element according to pattern
+# get index of element with value
 Array.find(){
 	for i in `Array.index ${1}`; do
-		[[ \${${1}[i]} == \${1} ]] && echo \"\${${1}[i]}\"
+		[[ \${${1}[i]} =~ \${1} ]] && echo $1 && return
+		# [ "`Array.get ${i}`" =~ "${2}" ] && echo ${i} && return
 	done
 }
 
+# get element by index
 Array.get(){
-	requires "$1" "$2" || eval echo \${${1}[\${2}]}
+	required "$1" "$2" && eval echo \${${1}[\${2}]}
 }
 
 Array.delete(){
-	requires "$1" "$2" || unset ${1}[\${2}]
+	required "$1" "$2" && unset ${1}[\${2}]
 }
 
 Array.push(){
-	requires "$1" "$2" && return 1
+	required "$1" "$2" || return 1
 	local count=`Array.count "$1"`
 	eval ${1}[$count]="${2}"
 	return ${count}

@@ -27,10 +27,10 @@ unload_classes(){
 	unset class_name
 }
 
-requires(){
+required(){
 	for i in `seq 1 $#`; do
 		local arg=`eval echo \\\$$i`
-		[ "$arg" == "" ] && echo "Missing params." && return 0
+		[ "$arg" == "" ] && echo "Missing arguments." && return 1
 	done
-	return 1
+	return 0
 }

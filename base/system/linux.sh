@@ -5,33 +5,52 @@
 # License: GPLv3
 ####################################################################
 
+####################################################################
+# arch
+####################################################################
+
+System.arch(){
+	[ `uname -m` == 'x86_64' ] && echo 'x64' || echo 'x86'
+}
+
+####################################################################
+# os version
+####################################################################
+
+System.os.version(){
+	lsb_release -r | cut -f2
+}
+
+System.os.version.name(){
+	head -1 /etc/issue | sed 's/\\.//g'
+}
+
+####################################################################
+# session
+####################################################################
+
 System.logged_user.name(){
 	who | cut -d' ' -f1 | sort -u | tail -1
 }
-
-alias System.logged_user="System.logged_user.name"
 
 # this gives us the pts/tty the user's on
 System.logged_user.id(){
 	who | awk '{ print \$2 }' | sort -u | tail -1
 }
 
-System.os_version(){
-	lsb_release -r | cut -f2
-}
+####################################################################
+# paths
+####################################################################
 
-System.os_version_name(){
-	head -1 /etc/issue | sed 's/\\.//g'
-}
+System.paths.root(){ echo "/"; }
 
-System.root_path(){ echo "/"; }
+System.paths.temp(){ echo '/tmp'; }
 
-System.temp_path(){ echo '/tmp'; }
+# to be discussed :)
+System.paths.os(){ echo "/etc"; }
 
-System.system_path(){ echo "/etc"; }
+System.paths.users(){ echo "/home"; }
 
-System.users_path(){ echo "/home"; }
+System.paths.programs(){ echo '/usr'; }
 
-System.programs_path(){ echo '/usr'; }
-
-System.home_path(){ eval echo ~; }
+System.paths.home(){ eval echo ~; }
