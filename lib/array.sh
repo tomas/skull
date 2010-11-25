@@ -47,7 +47,7 @@ alias Array.size='Array.count'
 #  find element according to pattern
 Array.find(){
 	for i in `Array.index ${1}`; do
-		[[ \${${1}[i]} =~ \${1} ]] && echo \"\${${1}[i]}\"
+		[[ \${${1}[i]} == \${1} ]] && echo \"\${${1}[i]}\"
 	done
 }
 
