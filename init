@@ -5,12 +5,7 @@
 # License: GPLv3
 ####################################################################
 
-if [ "$1" != "-i" ]; then
-	[ -z "$skull_path" ] && echo 'No skull_path set in your env!' && exit 1
-else
-	skull_path=`dirname "$0"`
-fi
-
+skull_path="${PWD}/${BASH_SOURCE[0]%/*}"
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH
 
 ####################################################################

@@ -19,11 +19,11 @@ System.os_version(){
 
 System.os_version_name(){
 	if [ -z "$System__OS_VERSION_NAME" ]; then
-		if [ `Number.greater_or_equal_than \`System.os_version\` 10.6` ]]; then
+		if [ `Number.greater_or_equal_than \`System.os_version\` 10.6` ]; then
 			System__OS_VERSION_NAME="Snow Leopard"
-		elif [ `Number.greater_or_equal_than \`System.os_version\` 10.5` ]]; then
+		elif [ `Number.greater_or_equal_than \`System.os_version\` 10.5` ]; then
 			System__OS_VERSION_NAME="Leopard"
-		elif [ `Number.greater_or_equal_than \`System.os_version\` 10.4` ]]; then
+		elif [ `Number.greater_or_equal_than \`System.os_version\` 10.4` ]; then
 			System__OS_VERSION_NAME="Tiger"
 		else
 			System__OS_VERSION_NAME="Unknown"

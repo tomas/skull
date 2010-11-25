@@ -31,6 +31,13 @@ Skull allows you to do pretty much the same, only without Ruby. Just plain ol' B
     $ a.push 'foo'
     $ a.count # => 1
 
+
+You can also just call methods "publicly", passing the element as an argument:
+
+    $ String.downcase "SHOOT, THIS ROCKS!" # => "shoot, this rocks"
+    $ a.push 'foo'
+    $ a.count # => 1
+
 Yes, this *is* Bash. Trust me.
 
 How it works
@@ -47,16 +54,15 @@ Get a tarball or clone the repo:
 
     $ git clone https://github.com/tomas/skull.git .
 
-If you want to use Skull in a script, you need to declare the path -- wherever you put it -- and source the init script.
+If you want to use Skull in a script, just source the init script.
 
     #!/bin/bash
-    skull_path='/usr/share/skull'
-    . "${skull_path}/init"
+    . "/path/to/skull/init"
     (your code)
 
-If you want to use Skull from the command line, source the init script with the -i argument. Just put this in your ~/.bashrc.
+Or directly from the command line. You can put in your ~/.bashrc and you'll have Skull 24/7.
 
-    . "/usr/share/skull/init" -i
+    . "/path/to/skull/init"
 
 Now you can start playing around!
 

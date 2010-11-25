@@ -12,8 +12,8 @@ base_path=`dirname $0`
 
 # Log__LEVEL=debug
 
-readonly skull_path="${base_path}/../"
-. "${skull_path}/init"
+current_path=`dirname "$0"`
+. "${current_path}/../init"
 
 #########################
 # classes & instances
