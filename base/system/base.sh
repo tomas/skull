@@ -5,7 +5,7 @@
 # License: GPLv3
 ####################################################################
 
-System.arch.x86(){ [ `System.arch` == 'x64' ] && echo 1; }
+System.arch.x86(){ [ `System.arch` == 'x86' ] && echo 1; }
 
 System.arch.64(){ [ `System.arch` == 'x64' ] && echo 1; }
 
