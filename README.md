@@ -21,15 +21,15 @@ Code
 
 In Ruby you could work with an array like this:
 
-  >> a = Array.new
-  >> a.push 'foo'
-  >> a.count # => 1
+    >> a = Array.new
+    >> a.push 'foo'
+    >> a.count # => 1
 
 Skull allows you to do pretty much the same, only without Ruby. Just plain ol' Bash.
 
-  \$ Array.new a
-  \$ a.push 'foo'
-  \$ a.count # => 1
+    $ Array.new a
+    $ a.push 'foo'
+    $ a.count # => 1
 
 Yes, this *is* Bash.
 
@@ -43,13 +43,13 @@ How to use
 
 - Get a tarball or clone the repo:
 
-  >> git clone https://github.com/tomas/skull.git .
+    $ git clone https://github.com/tomas/skull.git .
 
 - If you want to use Skull in a script, you need to declare the path and source the init script.
 
-	#!/bin/bash
-  skull_path='/usr/share/skull'
-  . "${skull_path}/init"
+    #!/bin/bash
+    skull_path='/usr/share/skull'
+    . "${skull_path}/init"
 
 - If you want to use Skull from the command line, source the init script with the -i argument. Just put this in your ~/.bashrc.
 
@@ -57,9 +57,9 @@ How to use
 
 - Now you can start playing around!
 
-	String.new str 'hello world'
-	str.titleize
-	str.length
+    String.new str 'hello world'
+    str.titleize # => 'Hello World'
+    str.length # => 10
 
 Note on Patches/Pull Requests
 -----------------------------
@@ -69,7 +69,6 @@ Note on Patches/Pull Requests
 * Add tests for it. This is important so I don't break it in a future version unintentionally.
 * Commit
 * Send me a pull request. Bonus points for topic branches.
-
 
 Copyright
 ---------
