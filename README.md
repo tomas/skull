@@ -34,7 +34,7 @@ Skull allows you to do pretty much the same, only without Ruby. Just plain ol' B
 
 You can also just call methods "publicly", passing the element as an argument:
 
-    $ String.downcase "SHOOT, THIS ROCKS!" # => "shoot, this rocks"
+    $ String.downcase "THIS ROCKS" # => "this rocks"
     $ a.push 'foo'
     $ a.count # => 1
 
