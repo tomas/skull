@@ -21,7 +21,8 @@ String.contains(){
 
 # returns length of string
 String.length(){
-	echo "$1" | wc -c
+	local length=`echo "$1" | wc -c`
+	echo $(($length-1))
 }
 
 alias String.size="String.length"

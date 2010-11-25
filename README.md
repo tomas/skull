@@ -60,7 +60,7 @@ Now you can start playing around!
 
     String.new str 'hello world'
     str.titleize # => 'Hello World'
-    str.length # => 10
+    str.length # => 11
 
 Note on Patches/Pull Requests
 -----------------------------
