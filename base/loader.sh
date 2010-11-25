@@ -19,3 +19,10 @@ init_classes(){
 	done
 	unset class_name
 }
+
+unload_classes(){
+	for class_name in $@; do
+		Class.unload $class_name
+	done
+	unset class_name
+}

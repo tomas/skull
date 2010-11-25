@@ -74,6 +74,7 @@ Note on Patches/Pull Requests
 Copyright
 ---------
 
-Copyright (c) 2010 Tomás Pollak. See LICENSE for details.
+A project by Tomás Pollak.
+Copyright (c) 2010 Fork Ltd. See LICENSE for details.
 
 [1]: https://github.com/tomas/prey
