@@ -7,6 +7,11 @@
 
 File__METHODS=(path dirname name basename extension extname size size.kb size.mb)
 
+####################################################
+# methods
+####################################################
+
+
 alias File.open='File.new'
 
 File.size.bytes(){

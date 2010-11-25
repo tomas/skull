@@ -7,13 +7,18 @@
 
 Array__METHODS=(all count delete each each_index find get index push split size)
 
+####################################################
+# methods
+####################################################
+
+# this method is only called once (when array class is being created)
+# we need it so the class loader doesnt break when loading this class
 Array.new(){
 	debug "Array class being initialized."
 	for method in ${Array__METHODS[@]}; do
 		eval "alias ${1}.${method}='Array.${method} ${1} '"
 	done
 	# eval "alias ${1}.destroy='Function.protected'"
-	# just so the class loader doesnt break when loading this class
 }
 
 # this overrides the class eval'd .send method
@@ -65,12 +70,3 @@ Array.push(){
 Array.split() {
 	echo "\${${1}[@]:\${1}:\${2}}"
 }
-
-# Alias for loop in array index
-alias Array.each='for el in Array.all'
-
-# Alias for loop in array index
-alias Array.each_index='for i in Array.index'
-
-# Alias for item in loop array index
-alias Array[i]='echo \${${1}[i]}'

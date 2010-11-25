@@ -47,9 +47,10 @@ How to use
 
 - If you want to use Skull in a script, you need to declare the path and source the init script.
 
-    #!/bin/bash
-    skull_path='/usr/share/skull'
-    . "${skull_path}/init"
+    | #!/bin/bash
+    | skull_path='/usr/share/skull'
+    | . "${skull_path}/init"
+    | (your code)
 
 - If you want to use Skull from the command line, source the init script with the -i argument. Just put this in your ~/.bashrc.
 
@@ -57,9 +58,9 @@ How to use
 
 - Now you can start playing around!
 
-    String.new str 'hello world'
-    str.titleize # => 'Hello World'
-    str.length # => 10
+    $ String.new str 'hello world'
+    $ str.titleize # => 'Hello World'
+    $ str.length # => 10
 
 Note on Patches/Pull Requests
 -----------------------------

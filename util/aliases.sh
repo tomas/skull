@@ -5,7 +5,6 @@
 # License: GPLv3
 ####################################################################
 
-#!/bin/bash
 alias now="date"
 
 # ruby-like syntax

@@ -5,10 +5,6 @@
 # License: GPLv3
 ####################################################################
 
-####################################################
-# class constants
-####################################################
-
 String__METHODS=(capitalize contains downcase decrypt encrypt length md5sum sanitize urlencode urldecode size titleize upcase)
 
 [ "$os" == 'windows' ] && String__LINE_BREAK='\r\n' || String__LINE_BREAK='\n'

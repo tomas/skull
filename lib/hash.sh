@@ -5,9 +5,7 @@
 # License: GPLv3
 ####################################################################
 
-####################################################
-# class constants
-####################################################
+Hash__METHODS=(all count delete each_pair find get keys values store size)
 
 ####################################################
 # methods
@@ -18,8 +16,6 @@
 # count elements		hash.count
 # get element: 			hash.get key
 # loop elements:		hash.each_pair
-
-Hash__METHODS=(all count delete each_pair find get keys values store size)
 
 # this overrides the class eval'd .send method
 # as we need to pass the descriptor to the methods
