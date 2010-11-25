@@ -29,17 +29,17 @@ Array.send(){
 }
 
 Array.all(){
-	[ -n "$1" ] && eval echo \${$1[@]}
+	requires "$1" || eval echo \${$1[@]}
 }
 
 # returns array index
 Array.index(){
-	[ -n "$1" ] && eval echo \${!${1}[@]}
+	requires "$1" || eval echo \${!${1}[@]}
 }
 
 # returns array size
 Array.count(){
-	[ -n "$1" ] && eval echo \${#${1}[@]}
+	requires "$1" || eval echo \${#${1}[@]}
 }
 
 alias Array.size='Array.count'
@@ -52,15 +52,15 @@ Array.find(){
 }
 
 Array.get(){
-	[[ -n "$1" && -n "$2" ]] && eval echo \${${1}[\${2}]}
+	requires "$1" "$2" || eval echo \${${1}[\${2}]}
 }
 
 Array.delete(){
-	[[ -n "$1" && -n "$2" ]] && unset ${1}[\${2}]
+	requires "$1" "$2" || unset ${1}[\${2}]
 }
 
 Array.push(){
-	[[ -z "$1" || -z "$2" ]] && return 1
+	requires "$1" "$2" && return 1
 	local count=`Array.count "$1"`
 	eval ${1}[$count]="${2}"
 	return ${count}
