@@ -11,11 +11,11 @@ Hash__METHODS=(all count delete each_pair find get keys values store size)
 # methods
 ####################################################
 
-# initialize hash: 	hash.new [name]
-# add element: 			hash[key] = value
-# count elements		hash.count
-# get element: 			hash.get key
-# loop elements:		hash.each_pair
+# initialize hash: 	Hash.new [hash_name]
+# add element: 			hash_name.store key value
+# count elements		hash_name.count
+# get element: 			hash_name.get key
+# loop elements: 		hash_name.all | while read key val; do ... done
 
 # this overrides the class eval'd .send method
 # as we need to pass the descriptor to the methods
