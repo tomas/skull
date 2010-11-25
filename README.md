@@ -41,26 +41,26 @@ Skull uses aliases as a way to attach "instance methods" to objects. So what Arr
 How to use
 ----------
 
-- Get a tarball or clone the repo:
+Get a tarball or clone the repo:
 
     $ git clone https://github.com/tomas/skull.git .
 
-- If you want to use Skull in a script, you need to declare the path and source the init script.
+If you want to use Skull in a script, you need to declare the path and source the init script.
 
-    | #!/bin/bash
-    | skull_path='/usr/share/skull'
-    | . "${skull_path}/init"
-    | (your code)
+    #!/bin/bash
+    skull_path='/usr/share/skull'
+    . "${skull_path}/init"
+    (your code)
 
-- If you want to use Skull from the command line, source the init script with the -i argument. Just put this in your ~/.bashrc.
+If you want to use Skull from the command line, source the init script with the -i argument. Just put this in your ~/.bashrc.
 
-  . "/usr/share/skull/init" -i
+    . "/usr/share/skull/init" -i
 
-- Now you can start playing around!
+Now you can start playing around!
 
-    $ String.new str 'hello world'
-    $ str.titleize # => 'Hello World'
-    $ str.length # => 10
+    String.new str 'hello world'
+    str.titleize # => 'Hello World'
+    str.length # => 10
 
 Note on Patches/Pull Requests
 -----------------------------
