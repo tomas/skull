@@ -1,0 +1,51 @@
+#!/bin/bash
+####################################################################
+# SKULL Framework - by Tomas Pollak (github.com/tomas)
+# (c) 2010 - Fork Ltd
+# License: GPLv3
+####################################################################
+
+if [ "$1" != "-i" ]; then
+	[ -z "$skull_path" ] && echo 'No skull_path set in your env!' && exit 1
+else
+	skull_path=`dirname "$0"`
+fi
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH
+
+####################################################################
+# bash behaviour
+####################################################################
+
+# set +e
+set +bm
+shopt -s expand_aliases
+shopt -s extglob
+
+####################################################################
+# base requires
+####################################################################
+
+source "${skull_path}/base/loader.sh"
+
+load "${skull_path}/base/logger.sh"
+load "${skull_path}/base/env.sh"
+load "${skull_path}/base/class.sh"
+
+Env.set
+
+####################################################################
+# libs and utils
+####################################################################
+
+load "${skull_path}/lib/*.sh"
+load "${skull_path}/util/*.sh"
+
+####################################################################
+# initialization
+####################################################################
+
+# init_classes Array Dir File Hash Numeric Process String XmlNode
+init_classes Array Hash File Numeric String XmlNode
+
+debug "Skull framework ready!"
