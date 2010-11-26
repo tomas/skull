@@ -37,14 +37,14 @@ You can also just call methods "publicly", passing the element as an argument:
     $ Process.kill 22674
     $ File.size '/path/to/file.txt'
 
-Yes, this *is* Bash. Trust me.
+Yes, this *is* Bash.
 
 How it works
 ------------
 
 Skull uses aliases as a way to attach "instance methods" to objects. So what Array.new is actually doing is associating a set of aliases and functions -- as declared by the Array "class" -- to the element passed.
 
-Skull *does* use eval here and there and yes, I know it's kind of ugly, but that's the only way (AFAIK) that dynamic method associations can be done. If you know a better way I'd love to hear about it.
+Skull *does* use eval here and there and I know it's pretty ugly. Unfortunately that's the only way (AFAIK) that dynamic method associations can be done in Bash. If you know a better way I'd love to hear about it.
 
 How to use
 ----------
