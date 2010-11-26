@@ -97,11 +97,11 @@ should_be "`str`" ""
 # xml
 #########################
 
-#XmlNode.new line '<foo name="skull">bar</foo>'
+XmlNode.new line '<foo name="skull">bar</foo>'
 
-#should_be `line.key` 'foo'
-#should_be `line.value` 'bar'
-#should_be `line.attribute "name"` 'skull'
+should_be `line.key` 'foo'
+should_be `line.value` 'bar'
+should_be `line.attribute "name"` 'skull'
 
 show_test_results
 echo " -- End time: `date`"
