@@ -47,8 +47,7 @@ alias Array.size='Array.count'
 # get index of element with value
 Array.find(){
 	for i in `Array.index ${1}`; do
-		[[ \${${1}[i]} =~ \${1} ]] && echo $1 && return
-		# [ "`Array.get ${i}`" =~ "${2}" ] && echo ${i} && return
+		[ `Array.get $1 $i` == "$2" ] && echo $i && return
 	done
 }
 
@@ -65,10 +64,12 @@ Array.push(){
 	required "$1" "$2" || return 1
 	local count=`Array.count "$1"`
 	eval ${1}[$count]="${2}"
-	return ${count}
+	return ${count} # element index
 }
 
-# Function to split a subarray
+# returns subarray
+# @param 2 start index
+# @param 3 number of elements
 Array.split() {
-	echo "\${${1}[@]:\${1}:\${2}}"
+	required "$1" "$2" "$3" && eval echo \${${1}[@]:${2}:${3}}
 }

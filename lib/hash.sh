@@ -37,7 +37,7 @@ alias Hash.size='Hash.count'
 
 # Function remove a item by index
 Hash.delete(){
-	required "$1" "$2" && unset ${1}[${2}] && unset ${1}__${2}
+	required "$1" "$2" &&	Array.delete "${1}" `Array.find "$1" "${2}"` && unset ${1}__${2}
 }
 
 #Hash.each_pair(){
@@ -47,13 +47,6 @@ Hash.delete(){
 # get item from hash
 Hash.get(){
 	required "$1" "$2" && eval echo \$${1}__${2}
-}
-
-# Function search patterns in items
-Hash.find(){
-	for i in \${!${1}[@]}; do
-		[[ \${${1}[i]} =~ \${1} ]] && echo \"\${${1}[i]}\"
-	done
 }
 
 # store the keys in array, declare the other one as a new var

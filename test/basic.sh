@@ -22,16 +22,16 @@ current_path=`dirname "$0"`
 
 log 'Testing Class'
 
-Array.new arr
+Array.new my_arr
 should_equal `Array.instances.count` 1
-arr.destroy
+my_arr.destroy
 should_equal `Array.instances.count` 0
 
-String.new str 'hello world'
-String.new str 'hello other world' # should overwrite previous instance
+String.new my_str 'hello world'
+String.new my_str 'hello other world' # should overwrite previous instance
 
 should_equal `String.instances.count` 1 # as the other one was overwritten
-str.destroy
+my_str.destroy
 should_equal `String.instances.count` 0
 
 #########################
@@ -40,20 +40,20 @@ should_equal `String.instances.count` 0
 
 log 'Testing Hash'
 
-Hash.new h
+Hash.new hh
 
-should_equal "`h.count`" 0
+should_equal "`hh.count`" 0
 
-h.store foo bar
-should_equal "`h.count`" 1
-h.store one two
-should_equal "`h.count`" 2
+hh.store foo bar
+should_equal "`hh.count`" 1
+hh.store one two
+should_equal "`hh.count`" 2
 
-should_be "`h.get 'foo'`" 'bar'
-should_be "`h.get 'one'`" 'two'
+should_be "`hh.get 'foo'`" 'bar'
+should_be "`hh.get 'one'`" 'two'
 
-# h.all
-h.destroy
+# hh.all
+hh.destroy
 
 #########################
 # arrays

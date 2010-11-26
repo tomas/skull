@@ -20,7 +20,7 @@ Class.new(){
 	: ${1:?"Class name required."}
 
 	debug "Initializing ${1} class..."
-	Array.new "${1}__INSTANCES" false
+	Array.new "${1}__INSTANCES"
 
 	eval "alias ${1}.methods='Array.all \"${1}__METHODS\"'"
 	eval "alias ${1}.instances='${1}__INSTANCES.all'"
@@ -42,7 +42,7 @@ Class.new(){
 		[ \`Function.exists \"${1}.initialize\"\` ] && ${1}.initialize \"\${1}\"
 
 		if [ ! \`${1}.instances.find \"\$1\"\` ]; then # instance doesnt exist
-			[ \"\$2\" != 'false' ] && ${1}__INSTANCES.push \"\${1}\"
+			[[ ! \"\$1\" =~ '__INSTANCES' ]] && ${1}__INSTANCES.push \"\${1}\"
 			eval ${1}__\${1}_INDEX=\$?
 		fi
 	}"
