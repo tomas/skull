@@ -59,7 +59,7 @@ If you want to use Skull in a script, just source the init script.
     . "/path/to/skull/init"
     (your code)
 
-Or directly from the command line. You can put in your ~/.bashrc and you'll have Skull 24/7.
+Or use it directly from the command line. You can put in your ~/.bashrc and you'll have Skull 24/7.
 
     . "/path/to/skull/init"
 
@@ -68,6 +68,17 @@ Now you can start playing around!
     String.new str 'hello world'
     str.titleize # => 'Hello World'
     str.length # => 11
+
+To get a list of available methods you can simply tab your way around or do:
+
+    str.methods # => capitalize contains downcase decrypt encrypt length (...)
+
+Other useful stuff includes aliases, an Xml node parser or the System functions:
+
+    System.os # => linux
+    System.os.version # => 10.10
+    System.arch # => x64
+    System.logged_user # => god
 
 Note on Patches/Pull Requests
 -----------------------------
