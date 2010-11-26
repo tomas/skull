@@ -35,7 +35,7 @@ System.logged_user.name(){
 
 # this gives us the pts/tty the user's on
 System.logged_user.id(){
-	who | awk '{ print \$2 }' | sort -u | tail -1
+	who | awk '{ print $2 }' | sort -u | tail -1
 }
 
 ####################################################################

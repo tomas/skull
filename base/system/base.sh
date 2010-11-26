@@ -5,8 +5,10 @@
 # License: GPLv3
 ####################################################################
 
+alias System.os='echo $os'
+
 System.arch.x86(){ [ `System.arch` == 'x86' ] && echo 1; }
 
-System.arch.64(){ [ `System.arch` == 'x64' ] && echo 1; }
+System.arch.x64(){ [ `System.arch` == 'x64' ] && echo 1; }
 
 alias System.logged_user="System.logged_user.name"

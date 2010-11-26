@@ -29,15 +29,16 @@ System.os.version(){
 		elif [ `String.contains NT` ]; then
 			System__OS_VERSION=NT
 		fi
+		ver.destroy
 	fi
 	echo $System__OS_VERSION
 }
 
-System.os.version.vista_and_up(){
+System.os.version.vista_and_above(){
 	[ `Number.is_greater_than \`System.os_version\` 6` ] && echo 1
 }
 
-System.os.version.xp_or_older(){
+System.os.version.xp_and_below(){
 	[ `Number.is_greater_than 6 \`System.os_version\`` ] && echo 1
 }
 
