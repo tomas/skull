@@ -8,13 +8,13 @@ Most of the stuff was taken out of [Prey][1], but since there's lots of useful f
 Overview
 --------
 
-Bash is awesome for many things, but doesn't have any way of working with objects. In fact, most of the stuff you normally do in Ruby/Python/etc is simply a method call, but normally in shell scripts you need to pipe a command into another and another, and perhaps another one too -- e.g. getting your IP address from ifconfig.
+Bash is awesome for many things, but some tasks can be quite a pain to accomplish. Unlike most of the stuff you can do in Ruby/Python/etc by calling a method on an object, shell scripts usually require you to pipe here and back again -- which is not bad a bad thing, anyway --, like when you try to getting your system's IP address from ifconfig.
 
 Besides, there is usually stuff that works differently in Mac than Linux, mostly because of the difference between the GNU and BSD variants of commands. And don't get me started on Windows. :)
 
 Skull provides a unified interface for working with strings, arrays, hashes, processes, etc in Bash. You can also "instantiate" objects and work with them using an "object-like" interface.
 
-Bash's syntax is actually quite similar to Ruby, so I figured it wouldn't be too hard to make Bash become more ruby-like. Take a look below.
+Bash's syntax shares a couple of things with Ruby's, so I figured it wouldn't be too hard to make it look even closer. Take a look below.
 
 Code
 ----
