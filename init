@@ -24,6 +24,7 @@ shopt -s extglob
 
 source "${skull_path}/base/loader.sh"
 
+load "${skull_path}/base/function.sh"
 load "${skull_path}/base/logger.sh"
 load "${skull_path}/base/env.sh" && Env.set
 load "${skull_path}/base/class.sh"
