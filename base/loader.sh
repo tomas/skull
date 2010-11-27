@@ -6,9 +6,12 @@
 ####################################################################
 
 load(){
-	for lib in $1; do
-		[ ! -f "$lib" ] && continue
-		source "$lib"
+	for lib in $@; do
+		if [ -d "$lib" ]; then
+			load "$lib/base.sh" "$lib/$os.sh"
+		elif [ -f "$lib" ]; then
+			. "$lib"
+		fi
 	done
 	unset lib
 }
@@ -25,12 +28,4 @@ unload_classes(){
 		Class.unload $class_name
 	done
 	unset class_name
-}
-
-required(){
-	for i in `seq 1 $#`; do
-		local arg=`eval echo \\\$$i`
-		[ "$arg" == "" ] && echo "Missing arguments." && return 1
-	done
-	return 0
 }

@@ -97,6 +97,7 @@ should_be "`str`" ""
 # xml
 #########################
 
+Class.new XmlNode
 XmlNode.new line '<foo name="skull">bar</foo>'
 
 should_be `line.key` 'foo'

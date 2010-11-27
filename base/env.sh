@@ -16,22 +16,6 @@ Env.set(){
 
 	# readonly os
 
-	. "${skull_path}/base/system/${os}.sh"
-	. "${skull_path}/base/system/base.sh"
-
-	# os speficic stuff
-	# readonly os_version=`System.os_version` # '10.10', '6.0' or '10.5'
-	# readonly os_version_name=`System.os_version_name` # 'Ubuntu' or 'Vista' or 'Snow Leopard'
-
-	# system/user paths
-	# readonly root_path='System.root_path'
-	# readonly temp_path='System.temp_path'
-
-	# session stuff
-	# readonly logged_user=`System.logged_user`
-	# readonly logger_pid=`System.logged_user_pid`
-	# readonly home_path='System.home_path'
-
 }
 
 Env.unset(){

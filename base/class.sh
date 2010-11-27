@@ -7,30 +7,41 @@
 
 # hint: this is where all the magic happens
 
+Alias.exists() {
+	type $1 2> /dev/null | grep -q 'is aliased to' && echo 1
+}
+
 Function.exists() {
 	type $1 2> /dev/null | grep -q 'is a function' && echo 1
 }
 
 Function.protected(){
-	error "Invalid request."
-	return 1
+	error "Invalid request." && return 1
+}
+
+# helper function for verifying args in functions
+required(){
+	for i in `seq 1 $#`; do
+		local arg=`eval echo \\\$$i`
+		[ "$arg" == "" ] && echo "Missing arguments." && return 1
+	done
+	return 0
 }
 
 Class.new(){
 	: ${1:?"Class name required."}
 
 	debug "Initializing ${1} class..."
-	Array.new "${1}__INSTANCES"
 
 	eval "alias ${1}.methods='Array.all \"${1}__METHODS\"'"
-	eval "alias ${1}.instances='${1}__INSTANCES.all'"
-	eval "alias ${1}.instances.count='${1}__INSTANCES.count'"
-	eval "alias ${1}.instances.find='${1}__INSTANCES.find'"
 
 	eval "${1}.new(){
 	  : \${1:?\"No instance name given.\`${1}.usage\`\"}
 
 		debug \"Creating new ${1} at \${1}...\"
+
+		[ ! \`Alias.exists \"${1}.instances\"\` ] && ${1}.init_instances
+
 		eval \"alias \${1}='echo \"\${2}\"'\"
 		eval \"alias \${1}.instance_index='${1}.instance_index \${1}'\"
 		eval \"alias \${1}.reload='${1}.reload \${1}'\"
@@ -42,9 +53,18 @@ Class.new(){
 		[ \`Function.exists \"${1}.initialize\"\` ] && ${1}.initialize \"\${1}\"
 
 		if [ ! \`${1}.instances.find \"\$1\"\` ]; then # instance doesnt exist
-			[[ ! \"\$1\" =~ '__INSTANCES' ]] && ${1}__INSTANCES.push \"\${1}\"
+			[[ ! \"\$1\" =~ '__INSTANCES' ]] && Array.push ${1}__INSTANCES \"\${1}\"
 			eval ${1}__\${1}_INDEX=\$?
 		fi
+	}"
+
+	eval "${1}.init_instances(){
+		debug \"Initializing ${1} instances...\"
+		${1}__INSTANCES=()
+		Array.load_methods ${1}__INSTANCES
+		eval \"alias ${1}.instances='${1}__INSTANCES.all'\"
+		eval \"alias ${1}.instances.count='${1}__INSTANCES.count'\"
+		eval \"alias ${1}.instances.find='${1}__INSTANCES.find'\"
 	}"
 
 	eval "${1}.reload(){
@@ -85,12 +105,12 @@ Class.new(){
 
 		${1}.unload_methods \"\${1}\"
 
-		${1}__INSTANCES.delete \`eval \${1}.instance_index\`
+		Array.delete ${1}__INSTANCES \`eval \${1}.instance_index\`
 		unalias \${1}.methods \${1} \${1}.destroy \${1}.instance_index
 	}"
 
 	eval "${1}.destroy_all(){
-		for el in `eval ${1}.instances`; do
+		for el in `Array.all ${1}__INSTANCES`; do
 			${1}.destroy \${el}
 		done
 	}"

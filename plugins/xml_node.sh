@@ -24,6 +24,3 @@ XmlNode.attribute(){
 }
 
 alias XmlNode.attr="XmlNode.attribute"
-
-Class.new XmlNode
-

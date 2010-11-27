@@ -6,6 +6,7 @@
 ####################################################################
 
 skull_path="${PWD}/${BASH_SOURCE[0]%/*}"
+[ -f "$skull_path" ] && skull_path=`dirname "$skull_path"`
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH
 
 ####################################################################
@@ -24,10 +25,9 @@ shopt -s extglob
 source "${skull_path}/base/loader.sh"
 
 load "${skull_path}/base/logger.sh"
-load "${skull_path}/base/env.sh"
+load "${skull_path}/base/env.sh" && Env.set
 load "${skull_path}/base/class.sh"
-
-Env.set
+load "${skull_path}/base/system"
 
 ####################################################################
 # libs and utils
@@ -35,7 +35,7 @@ Env.set
 
 load "${skull_path}/lib/*.sh"
 load "${skull_path}/util/*.sh"
-load "${skull_path}/plugins/*.sh"
+load "${skull_path}/plugins/*"
 
 ####################################################################
 # initialization
