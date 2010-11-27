@@ -72,7 +72,7 @@ Class.new(){
 	}"
 
 	eval "${1}.load_methods(){
-		debug 'Attaching methods...'
+		debug \"Attaching methods to \"\$1\"...\"
 		for method in \`${1}.methods\` methods; do
 			[ -n \"\$2\" ] && local arg=\\\"\${2}\\\"
 			eval \"alias \${1}.\${method}='${1}.send '\${method}' \\\"\${1}\\\" \"\$arg\"'\"
