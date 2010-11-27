@@ -5,12 +5,19 @@
 # License: GPLv3
 ####################################################################
 
-File__METHODS=(path dirname name basename extension extname size size.kb size.mb)
+File__METHODS=(path dirname name basename ext extension modified_at size size.kb size.mb)
+
+####################################################
+# class methods
+####################################################
+
+File.exists(){
+	[ -f "$1" ] && echo 1
+}
 
 ####################################################
 # methods
 ####################################################
-
 
 alias File.open='File.new'
 
@@ -41,16 +48,12 @@ File.basename(){
 
 alias File.name='File.basename'
 
-File.exists(){
-	[ -f "$1" ] && echo 1
-}
-
 File.modified_at(){
 	stat -c %y "$1" | cut -d ' ' -f1
 }
 
-File.extname(){
+File.extension(){
 	echo "${1##*.}"
 }
 
-alias File.extension='File.extname'
+alias File.ext='File.extension'
