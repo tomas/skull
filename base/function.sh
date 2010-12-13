@@ -19,7 +19,7 @@ Function.protected(){
 
 # helper function for verifying args in functions
 required(){
-	for i in `seq 1 $#`; do
+	for i in @#; do
 		local arg=`eval echo \\\$$i`
 		[ "$arg" == "" ] && echo "Missing arguments." && return 1
 	done

@@ -23,11 +23,11 @@ failed() {
 }
 
 should_be(){
-	[ "$1" == "$2" ] && passed || failed $1 $2
+	[ "$1" == "$2" ] && passed || failed "$1" "$2"
 }
 
 should_not_be(){
-	[ "$1" != "$2" ] && passed || failed $1 $2
+	[ "$1" != "$2" ] && passed || failed "$1" "$2"
 }
 
 # for numeric expressions
@@ -39,15 +39,15 @@ should_include(){
 	if [[ "$1" =~ "$2" ]]; then
 		passed
 	else
-		failed $1 $2
+		failed "$1" "$2"
 	fi
 }
 
 should_not_include(){
 	if [[ "$1" =~ "$2" ]]; then
-		failed
+		failed "$1" "$2"
 	else
-		passed $1 $2
+		passed 
 	fi
 }
 

@@ -84,6 +84,8 @@ String.new str 'Hello world'
 should_be "`str`" "Hello world"
 should_be "`str.upcase`" 'HELLO WORLD'
 should_be "`str.downcase`" 'hello world'
+should_be "`str.capitalize_once`" 'Hello world'
+should_be "`str.capitalize_all`" 'Hello World'
 should_be "`str.sanitize`" 'hello-world'
 should_be "`str.urlencode`" 'Hello%20world'
 should_be "`str.encrypt`" 'SGVsbG8gd29ybGQ='

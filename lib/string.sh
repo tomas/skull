@@ -5,7 +5,7 @@
 # License: GPLv3
 ####################################################################
 
-String__METHODS=(capitalize contains downcase decrypt encrypt length lowercase \
+String__METHODS=(capitalize capitalize_once capitalize_all contains downcase decrypt encrypt length lowercase \
 								md5sum sanitize urlencode urldecode replace replace_once \
 								replace_all size titleize upcase )
 
@@ -21,10 +21,15 @@ String.contains(){
 	required "$1" "$2" && echo "${1}" | grep "${2}" 1> /dev/null && echo 1
 }
 
-String.capitalize(){
-	echo "$1" | sed -r 's/\b(.)/\U\1/g'
-	# echo "$1" | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1'
+String.capitalize_once(){
+	echo "$1" | sed 's/\b\(.\)/\U\1/'
 }
+
+String.capitalize_all(){
+	echo "$1" | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1'
+}
+
+alias String.capitalize="String.capitalize_all"
 
 # returns lowercased string, expects string as $1
 String.downcase(){
@@ -75,7 +80,7 @@ alias String.replace="String.replace_all"
 
 String.sanitize(){
 	[ -n "$2" ] && local sanitizer="$2" || local sanitizer="-"
-	String.downcase "$1" | sed -r -e "s/[^a-zA-Z -_]//g" -e "s/-|_| /${sanitizer}/g"
+	String.downcase "$1" | sed -e "s/[^a-zA-Z -_]//g" -e "s/-/${sanitizer}/g" -e "s/_/${sanitizer}/g" -e "s/ /${sanitizer}/g"
 }
 
 String.titleize(){
