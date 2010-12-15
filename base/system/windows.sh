@@ -66,16 +66,16 @@ System.logged_user.name(){
 }
 
 System.logged_user.id(){
-	Process.id explore.exe
+	Process.id 'explore.exe'
 }
 
 ####################################################################
 # paths
 ####################################################################
 
-System.paths.root(){ echo 'C:\' }
+System.paths.root(){ echo 'C:\'; }
 
-System.paths.os(){ echo "$WINDIR" }
+System.paths.os(){ echo "$WINDIR"; }
 
 System.paths.temp(){ echo "$WINDIR\Temp"; }
 

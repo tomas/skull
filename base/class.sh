@@ -32,7 +32,7 @@ Class.new(){
 		[ \`Function.exists \"${1}.initialize\"\` ] && ${1}.initialize \"\${1}\"
 
 		if [ ! \`${1}.instances.find \"\$1\"\` ]; then # instance doesnt exist
-			[[ ! \"\$1\" =~ '__INSTANCES' ]] && Array.push ${1}__INSTANCES \"\${1}\"
+			[[ \"\$1\" != '${1}__INSTANCES' ]] && Array.push ${1}__INSTANCES \"\${1}\"
 			eval ${1}__\${1}_INDEX=\$?
 		fi
 	}"

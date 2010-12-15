@@ -36,19 +36,11 @@ should_equal(){
 }
 
 should_include(){
-	if [[ "$1" =~ "$2" ]]; then
-		passed
-	else
-		failed "$1" "$2"
-	fi
+	[[ `grep "$1" "$2" > /dev/null` ]] && passed || failed "$1" "$2"
 }
 
 should_not_include(){
-	if [[ "$1" =~ "$2" ]]; then
-		failed "$1" "$2"
-	else
-		passed 
-	fi
+	[[ `grep "$1" "$2" > /dev/null` ]] && failed "$1" "$2" || passed
 }
 
 show_test_results(){
