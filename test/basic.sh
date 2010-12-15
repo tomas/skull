@@ -89,6 +89,7 @@ should_be "`str.capitalize_all`" 'Hello World'
 should_be "`str.sanitize`" 'hello-world'
 should_be "`str.urlencode`" 'Hello%20world'
 should_be "`str.encrypt`" 'SGVsbG8gd29ybGQ='
+should_be "`String.decrypt SGVsbG8gd29ybGQ=`" 'Hello world'
 
 str.destroy
 
@@ -99,8 +100,10 @@ should_be "`str`" ""
 # xml
 #########################
 
+log 'Testing XmlNode plugin'
+
 Class.new XmlNode
-XmlNode.new line '<foo name="skull">bar</foo>'
+XmlNode.new line '<foo name="skull" other_attr="bash">bar</foo>'
 
 should_be `line.key` 'foo'
 should_be `line.value` 'bar'

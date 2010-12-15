@@ -1,7 +1,7 @@
 Skull
 ======
 
-Skull is a Bash framework that provides an object-oriented-like layer for writing shell scripts, or just for working on the terminal.
+Skull is a Bash framework that provides an object-oriented-like interface for writing shell scripts, or just for working on the terminal.
 
 Most of the stuff was taken out of [Prey][1], but since there's lots of useful functions, I decided to turn it into a framework on its own. Skull is written purely in Bash and doesn't have any special requirements. Just drop, include and use.
 
