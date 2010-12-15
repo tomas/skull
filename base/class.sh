@@ -6,6 +6,7 @@
 ####################################################################
 
 # hint: this is where all the magic happens
+# Log__LEVEL='debug'
 
 Class.new(){
 	: ${1:?"Class name required."}
@@ -31,7 +32,7 @@ Class.new(){
 		# call the initialize function on the class if it exists
 		[ \`Function.exists \"${1}.initialize\"\` ] && ${1}.initialize \"\${1}\"
 
-		if [ ! \`${1}.instances.find \"\$1\"\` ]; then # instance doesnt exist
+		if [ ! \`${1}__INSTANCES.find \"\$1\"\` ]; then # instance doesnt exist
 			[[ \"\$1\" != '${1}__INSTANCES' ]] && Array.push ${1}__INSTANCES \"\${1}\"
 			eval ${1}__\${1}_INDEX=\$?
 		fi
@@ -41,9 +42,15 @@ Class.new(){
 		debug \"Initializing ${1} instances...\"
 		${1}__INSTANCES=()
 		Array.load_methods ${1}__INSTANCES
-		eval \"alias ${1}.instances='${1}__INSTANCES.all'\"
+		eval \"alias ${1}.instances='${1}__INSTANCES'\"
 		eval \"alias ${1}.instances.count='${1}__INSTANCES.count'\"
-		eval \"alias ${1}.instances.find='${1}__INSTANCES.find'\"
+	}"
+
+	eval "${1}.uninit_instances(){
+		debug \"Uninitializing ${1} instances...\"
+		unset ${1}__INSTANCES
+		Array.unload_methods ${1}__INSTANCES
+		unalias ${1}.instances ${1}.instances.count
 	}"
 
 	eval "${1}.reload(){
@@ -62,6 +69,7 @@ Class.new(){
 		for method in \`${1}.methods\`; do
 			unalias \${1}.\${method}
 		done
+		unalias \${1}.methods
 	}"
 
 	# @param 1 = method
@@ -85,7 +93,7 @@ Class.new(){
 		${1}.unload_methods \"\${1}\"
 
 		Array.delete ${1}__INSTANCES \`eval \${1}.instance_index\`
-		unalias \${1}.methods \${1} \${1}.destroy \${1}.instance_index
+		unalias \${1} \${1}.destroy \${1}.instance_index
 	}"
 
 	eval "${1}.destroy_all(){
@@ -109,5 +117,11 @@ Class.unload(){
 	debug "Destroying instances of ${1} class..."
 	${1}.destroy_all
 
-	[ "$1" == "Array" ] && error 'System class, cannot be unloaded.' || ${1}__INSTANCES.destroy
+	if [ "$1" == "Array" ]; then
+		error 'System class, cannot be unloaded.'
+	elif [ `Alias.exists ${1}.instances` ]; then
+		${1}.uninit_instances
+	else
+		debug "No instances to remove."
+	fi
 }
