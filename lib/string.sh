@@ -7,7 +7,7 @@
 
 String__METHODS=(capitalize capitalize_once capitalize_all contains downcase decrypt encrypt length lowercase \
 								md5sum sanitize urlencode urldecode replace replace_once \
-								replace_all size titleize upcase )
+								replace_all size titleize trim upcase )
 
 [ "$os" == 'windows' ] && String__LINE_BREAK='\r\n' || String__LINE_BREAK='\n'
 
@@ -85,6 +85,15 @@ String.sanitize(){
 
 String.titleize(){
 	echo "$1" | sed -r -e "s/-|_/ /g" -e 's/\b(.)/\U\1/g'
+}
+
+# removes leading and trailing whitespace from string
+# optionally you can pass a specific char as $2 and that will be removed instead of whitespace
+String.trim(){
+	[ -n "$2" ] && local char="$2" || local char=" "
+	local string="${1%%*($char)}"
+	local string="${string##*($char)}"
+	echo "$string"
 }
 
 # returns a urlencoded string, expects string as $1

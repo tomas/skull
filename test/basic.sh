@@ -96,6 +96,16 @@ str.destroy
 String.new str
 should_be "`str`" ""
 
+str.destroy
+
+String.new str "   string with whitespace   "
+should_be "`str.trim`" "string with whitespace"
+
+str.destroy
+
+String.new str "---string-with-dashes---"
+should_be "`str.trim -`" "string-with-dashes"
+
 #########################
 # xml
 #########################
