@@ -64,7 +64,7 @@ alias String.size="String.length"
 
 # returns the md5 hash for a string, expects string as $1
 String.md5sum(){
-	[ "$os" == "mac" ] && local md5="/sbin/md5 -r" || local md5=`which md5sum`
+	[ `System.os` == "mac" ] && local md5="/sbin/md5 -r" || local md5=`which md5sum`
 	(echo -n "$1" | $md5 | sed 's/.*\([a-f0-9]\{32\}\).*/\1/')
 }
 

@@ -89,6 +89,7 @@ should_be "`str.capitalize_all`" 'Hello World'
 should_be "`str.sanitize`" 'hello-world'
 should_be "`str.urlencode`" 'Hello%20world'
 should_be "`str.encrypt`" 'SGVsbG8gd29ybGQ='
+should_be "`str.md5sum`" '3e25960a79dbc69b674cd4ec67a72c62'
 should_be "`String.decrypt SGVsbG8gd29ybGQ=`" 'Hello world'
 
 str.destroy
