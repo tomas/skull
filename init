@@ -5,8 +5,8 @@
 # License: GPLv3
 ####################################################################
 
-skull_path="${PWD}/${BASH_SOURCE[0]%/*}"
-[ -f "$skull_path" ] && skull_path=`dirname "$skull_path"`
+skull_path="${BASH_SOURCE[0]%/*}"
+[ -f "$skull_path" ] && skull_path=$(dirname "$skull_path")
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH
 
 ####################################################################
