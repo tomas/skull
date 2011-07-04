@@ -66,6 +66,10 @@ System.logged_user.name(){
 }
 
 System.logged_user.id(){
+	echo "Not yet implemented"
+}
+
+System.logged_user.session_id(){
 	Process.id 'explore.exe'
 }
 

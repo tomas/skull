@@ -29,13 +29,19 @@ System.os.version.name(){
 # session
 ####################################################################
 
+# whoami wont work if we're running as root. 
+# the point is to get the user name of the active session
 System.logged_user.name(){
-	who | cut -d' ' -f1 | sort -u | tail -1
+	who | awk '{ print $1 }' | tail -1
 }
 
 # this gives us the pts/tty the user's on
+System.logged_user.location(){
+	who | awk '{ print $2 }' | tail -1
+}
+
 System.logged_user.id(){
-	who | awk '{ print $2 }' | sort -u | tail -1
+	id -u $(System.logged_user.name)
 }
 
 ####################################################################

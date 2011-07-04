@@ -42,10 +42,19 @@ System.os.version.name(){
 ####################################################################
 
 System.logged_user.name(){
-	who | cut -d' ' -f1 | sort -u | tail -1
+	who | awk '{ print $1 }' | tail -1
+}
+
+# this gives us the pts/tty the user's on
+System.logged_user.location(){
+	who | awk '{ print $2 }' | tail -1
 }
 
 System.logged_user.id(){
+	id -u $(System.logged_user.name)
+}
+
+System.logged_user.session_id(){
 	Process.id "loginwindow.app"
 }
 
