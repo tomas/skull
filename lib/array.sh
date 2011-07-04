@@ -44,10 +44,10 @@ Array.count(){
 
 alias Array.size='Array.count'
 
-# get index of element with value
+# get index of first element with value
 Array.find(){
 	for i in `Array.index ${1}`; do
-		[ `Array.get $1 $i` == "$2" ] && echo $i && return
+		[ "$(Array.get $1 $i)" == "$2" ] && echo $i && return
 	done
 }
 
@@ -62,7 +62,7 @@ Array.delete(){
 
 Array.push(){
 	required "$1" "$2" || return 1
-	local count=`Array.count "$1"`
+	local count=$(Array.count "$1")
 	eval ${1}[$count]="${2}"
 	return ${count} # element index
 }
