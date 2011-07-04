@@ -32,7 +32,8 @@ Array.all(){
 	required "$1" && eval echo \${$1[@]}
 }
 
-# returns array index
+# returns list of array indexes
+# eg. => 0 1 3 4 6
 Array.index(){
 	required "$1" && eval echo \${!${1}[@]}
 }
@@ -40,6 +41,7 @@ Array.index(){
 # returns array size
 Array.count(){
 	required "$1" && eval echo \${#${1}[@]}
+	# required "$1" && Array.index "$1" | wc -w
 }
 
 alias Array.size='Array.count'
@@ -62,9 +64,12 @@ Array.delete(){
 
 Array.push(){
 	required "$1" "$2" || return 1
-	local count=$(Array.count "$1")
-	eval ${1}[$count]="${2}"
-	return ${count} # element index
+	local index=$(Array.index "$1")
+	# we need to get the last element's index so we append the last element
+	# instead of overwriting it, in case an element was removed
+	[ -n "$index" ] && local new_index=$((${index#${index%?}}+1)) || local new_index=0
+	eval ${1}[$new_index]="${2}"
+	return ${new_index} # element index
 }
 
 # returns subarray

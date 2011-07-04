@@ -65,11 +65,23 @@ Array.new arr
 
 arr.push 'one'
 arr.push 'two'
+should_equal "$?" 1 # arr.push returns the index of the element pushed
+
 arr.push 'three'
 should_equal `arr.count` 3
 
-arr.delete 1
+should_equal $(arr.find "three") 2
+
+arr.delete 1 # deleting 'two'
 should_equal `arr.count` 2
+
+arr.push "four"
+should_equal "$?" 3 # third element, since we deleted one
+
+arr.push "five"
+arr.push "six"
+
+should_equal $(arr.find "six") 5
 
 arr.destroy
 
