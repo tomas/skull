@@ -34,7 +34,7 @@ Process.id(){
 
 # kills a specified process, expects the process name
 Process.kill(){
-	[ -n "$2" ] && local signal="$2" || local signal="-9"
+	[ -n "$2" ] && local signal="$2" || local signal="-TERM"
 	local pid=`Process.id "$1"`
 	if [ -n "$pid" ]; then
 		kill $signal $pid 2> /dev/null
