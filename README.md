@@ -40,7 +40,7 @@ Besides Array, there is Hash, String, Numeric, File and some other classes.
     $ Hash.new h
     $ h.store 'john' 'lennon'
     $ h.get 'john' # => 'lennon'
-    $ h.all | while read key val; do echo "${key} -> ${val}"; done # 'john -> lennon'
+    $ h.all | while read key val; do echo "${key}: ${val}"; done # => 'john: lennon'
 
 You can also just call methods "publicly", passing the element as an argument:
 
