@@ -77,8 +77,12 @@ Or use it directly from the command line. You can put in your ~/.bashrc and you'
 Now you can start playing around!
 
     String.new str 'hello world'
-    str.titleize # => 'Hello World'
     str.length # => 11
+    str.titleize # => 'Hello World'
+    str.upcase # => 'HELLO WORLD'
+    str.sanitize # => 'hello-world'
+    str.urlencode # => 'hello%20world'
+    str.md5sum # => '5eb63bbbe01eeed093cb22bb8f5acdc3'
 
 To get a list of available methods you can simply tab your way around or do:
 
