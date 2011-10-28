@@ -66,7 +66,7 @@ System.paths.root(){ echo "/"; }
 
 System.paths.temp(){ echo '/tmp'; }
 
-System.paths.system(){ echo "/Library"; }
+System.paths.os(){ echo "/Library"; }
 
 System.paths.users(){ echo "/Users"; }
 
