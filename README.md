@@ -3,12 +3,14 @@ Skull
 
 Skull is a Bash framework that provides an object-oriented-like interface for writing shell scripts, or just for working on the terminal.
 
-Most of the stuff was taken out of [Prey][1], but since there's lots of useful functions, I decided to turn it into a framework on its own. Skull is written purely in Bash and doesn't have any special requirements. Just drop, include and use.
+In the process of developing [Prey][1] I ended up having lots of functions that were not really part of its core logic. So I decided to pack them altogether and turn it into a framework of its own.
 
-Overview
+Skull is written purely in Bash and doesn't have any special requirements. Just drop, include and use.
+
+Why?
 --------
 
-Bash is awesome for many things, but some tasks can be quite a pain to accomplish. Unlike most of the stuff you can do in Ruby/Python/etc by calling a method on an object, shell scripts usually require you to pipe here and back again -- which is not bad a bad thing, anyway --, like when you try to getting your system's IP address from ifconfig.
+Bash is awesome for many many things, but some tasks can be quite a pain to accomplish. Unlike most of the stuff you can do in Ruby/Python/etc by calling a method on an object, shell scripts usually require you to pipe here and back again -- which is not bad a bad thing, anyway --, like when you try to getting your system's IP address from ifconfig.
 
 Besides, there is usually stuff that works differently in Mac than Linux, mostly because of the difference between the GNU and BSD variants of commands. And don't get me started on Windows. :)
 
@@ -30,6 +32,15 @@ Skull allows you to do pretty much the same, only without Ruby. Just plain ol' B
     $ Array.new a
     $ a.push 'foo'
     $ a.count # => 1
+    $ a.push 'bar'
+    $ a.find 'bar' # => 1 (second element)
+
+Besides Array, there is Hash, String, Numeric, File and some other classes.
+
+    $ Hash.new h
+    $ h.store 'john' 'lennon'
+    $ h.get 'john' # => 'lennon'
+    $ h.all | while read key val; do echo "${key} -> ${val}"; done # 'john -> lennon'
 
 You can also just call methods "publicly", passing the element as an argument:
 
@@ -37,7 +48,7 @@ You can also just call methods "publicly", passing the element as an argument:
     $ Process.kill 22674
     $ File.size '/path/to/file.txt'
 
-Yes, this *is* Bash.
+Yes sir, this *is* Bash.
 
 How it works
 ------------
