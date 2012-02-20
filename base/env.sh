@@ -10,8 +10,8 @@ Env.set(){
 
 	if [ "$os" == "windowsnt" ]; then
 		os=windows
-	elif [ "$os" == "darwin" ];
-		then os=mac
+	elif [ "$os" == "darwin" ]; then 
+		os=mac
 	fi
 
 	# readonly os
