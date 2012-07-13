@@ -55,8 +55,6 @@ How it works
 
 Skull uses aliases as a way to attach "instance methods" to objects. So what Array.new is actually doing is associating a set of aliases and functions -- as declared by the Array "class" -- to the element passed.
 
-Skull *does* use eval here and there and I know it's pretty ugly. Unfortunately that's the only way (AFAIK) that dynamic method associations can be done in Bash. If you know a better way I'd love to hear about it.
-
 How to use
 ----------
 
@@ -104,10 +102,14 @@ Note on Patches/Pull Requests
 * Commit
 * Send me a pull request. Bonus points for topic branches.
 
+Credits
+-------
+
+Written by Tomás Pollak.
+
 Copyright
 ---------
 
-A project by Tomás Pollak.
 Copyright (c) 2010 Fork Ltd. See LICENSE for details.
 
 [1]: https://github.com/tomas/prey
