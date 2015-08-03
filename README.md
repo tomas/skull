@@ -42,7 +42,7 @@ Besides Array, there is Hash, String, Numeric, File and some other classes.
     $ h.get 'john' # => 'lennon'
     $ h.all | while read key val; do echo "${key}: ${val}"; done # => 'john: lennon'
 
-You can also just call methods "publicly", passing the element as an argument:
+You can also call "class methods" directly, passing the element as an argument:
 
     $ String.downcase "THIS ROCKS" # => "this rocks"
     $ Process.kill 22674
@@ -93,8 +93,8 @@ Other useful stuff includes aliases, an Xml node parser or the System functions:
     System.arch # => x64
     System.logged_user # => god
 
-Note on Patches/Pull Requests
------------------------------
+Sending Pull Requests
+---------------------
 
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -110,6 +110,6 @@ Written by Tomás Pollak.
 Copyright
 ---------
 
-Copyright (c) 2010 Fork Ltd. See LICENSE for details.
+Copyright (c) Fork Ltd. See LICENSE for details.
 
 [1]: https://github.com/tomas/prey
