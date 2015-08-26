@@ -71,8 +71,8 @@ System.paths.os() { echo "$WINDIR"; }
 
 System.paths.temp() { echo "$WINDIR\Temp"; }
 
-System.paths.programs() { [ `System.64_bit` ] && echo "C:\Program\ Files\ \(x86\)" || echo "C:\Program\ Files"; }
+System.paths.programs() { [ -n "$(System.x64)" ] && echo "C:\Program\ Files\ \(x86\)" || echo "C:\Program\ Files"; }
 
-System.paths.users() { [ `Dir.exists "C:\Users"` ] && echo "C:\Users" || echo "C:\Documents\ and\ Settings"; }
+System.paths.users() { [ $(Dir.exists "C:\Users") ] && echo "C:\Users" || echo "C:\Documents\ and\ Settings"; }
 
-System.paths.home() { echo "`System.users_path`\\`System.logged_user.name`"; }
+System.paths.home() { echo "$(System.paths.users)\\$(System.logged_user.name)"; }
