@@ -9,16 +9,16 @@
 # methods
 ####################################################
 
-Dir.exists(){
-	[ -d "$1" ] && echo 1
+Dir.exists() {
+  [ -d "$1" ] && echo 1
 }
 
-Dir.full_path(){
-	if [ "$1" != '.' ]; then
-		cd "$1"
-		echo $PWD
-		cd - &> /dev/null
-	else
-		echo $PWD
-	fi
+Dir.full_path() {
+  if [ "$1" != '.' ]; then
+    cd "$1"
+    echo $PWD
+    cd - &> /dev/null
+  else
+    echo $PWD
+  fi
 }

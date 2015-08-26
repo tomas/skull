@@ -5,19 +5,18 @@
 # License: GPLv3
 ####################################################################
 
-Env.set(){
-	os=`uname | tr '[:upper:]' '[:lower:]'`
+Env.set() {
+  os=$(uname | tr '[:upper:]' '[:lower:]')
 
-	if [ "$os" == "windowsnt" ]; then
-		os=windows
-	elif [ "$os" == "darwin" ]; then 
-		os=mac
-	fi
+  if [ "$os" == "windowsnt" ]; then
+    os=windows
+  elif [ "$os" == "darwin" ]; then
+    os=mac
+  fi
 
-	# readonly os
-
+  # readonly os
 }
 
-Env.unset(){
-	unset os # os_version os_version_name root_path temp_path home_path logged_user logged_user_pid
+Env.unset() {
+  unset os # os_version os_version_name root_path temp_path home_path logged_user logged_user_pid
 }

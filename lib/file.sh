@@ -9,51 +9,49 @@ File__METHODS=(path dirname name basename ext extension modified_at size size.kb
 
 ####################################################
 # class methods
-####################################################
 
-File.exists(){
-	[ -f "$1" ] && echo 1
+File.exists() {
+  [ -f "$1" ] && echo 1
 }
 
 ####################################################
 # methods
-####################################################
 
 alias File.open='File.new'
 
-File.size.bytes(){
-	cat "$1" | wc -c
+File.size.bytes() {
+  cat "$1" | wc -c
 }
 
 alias File.size='File.size.bytes'
 
-File.size.kb(){
-	echo $((`File.size.bytes "$1"`/1024))
+File.size.kb() {
+  echo $((`File.size.bytes "$1"`/1024))
 }
 
-File.size.mb(){
-	echo $((`File.size.kb "$1"`/1024))
+File.size.mb() {
+  echo $((`File.size.kb "$1"`/1024))
 }
 
-File.dirname(){
-	dirname "${1}"
+File.dirname() {
+  dirname "${1}"
 }
 
 alias File.path='File.dirname'
 
-File.basename(){
-	basename "${1}"
-	# echo "${1%.*}"
+File.basename() {
+  basename "${1}"
+  # echo "${1%.*}"
 }
 
 alias File.name='File.basename'
 
-File.modified_at(){
-	stat -c %y "$1" | cut -d ' ' -f1
+File.modified_at() {
+  stat -c %y "$1" | cut -d ' ' -f1
 }
 
-File.extension(){
-	echo "${1##*.}"
+File.extension() {
+  echo "${1##*.}"
 }
 
 alias File.ext='File.extension'
