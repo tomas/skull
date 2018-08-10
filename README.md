@@ -3,8 +3,6 @@ Skull
 
 Skull is a Bash framework that provides an object-oriented-like interface for writing shell scripts or working on the terminal.
 
-In the process of developing [Prey][1] I ended up having lots of functions that were not really part of its core logic. So I decided to pack them altogether and turn them into a framework of their own.
-
 Skull is written purely in Bash and doesn't have any special requirements. Just drop, include and use.
 
 Why?
